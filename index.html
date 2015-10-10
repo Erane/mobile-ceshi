@@ -55,6 +55,7 @@
         }
         main{
             position: absolute;
+            width: 100%;
             top: 50px;
             bottom: 34px;
             overflow-y: scroll;
@@ -79,10 +80,11 @@
 <script type="text/javascript">
         var nodes=[];
     for(var i=0;i<1000;i++){
-       nodes[i]=document.createElement("br")
-    }
+        nodes[i]=i+"<br>";
 
-    document.getElementsByTagName("div")[0].innerHTML=nodes
+    }
+        document.getElementsByTagName("div")[0].innerHTML=nodes
+
 </script>
 </body>
 </html>
