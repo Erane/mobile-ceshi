@@ -7,91 +7,136 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
     <meta content="email=no" name="format-detection">
-    <style type="text/css">
+    <style>
         *{
-            margin: 0;
             padding: 0;
+            margin: 0;
+        }
+        @font-face {font-family: 'iconfont';
+            src: url('fonts/iconfont.eot'); /* IE9*/
+            src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+            url('fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url('fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:16px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;}
+        html {
+            font-size: 62.5%;
+            height: 100%;
+            width: 100%;
+        }
+        html,
+        body {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        ul,
+        li {
             list-style: none;
         }
-        html,body{
-            height: 100%;
+        body {
+            font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+            font-size: 12px;
+            font-size: 1.2rem ;
             width: 100%;
-            overflow: hidden;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-box-align: center;
         }
-        body{
+        a,
+        img {
+            -webkit-touch-callout: none;
+        }
+        #GroupWrite-choice {
+            width: 88%;
+            height: 3.5rem;
+            margin-top: 2rem;
             position: relative;
-            text-align: center;
+            line-height: 3.5rem;
+            font-size: 1.5rem;
         }
-        .a{
-            background: cadetblue;
-            width: 100%;
-            height: 100%;
-            -webkit-transition: all 400ms;
-            -moz-transition: all 400ms;
-            -ms-transition: all 400ms;
-            -o-transition: all 400ms;
-            transition: all 400ms;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-
-        }
-        .b{
+        #GroupWrite-choice:before {
+            content: "";
             position: absolute;
-            left: 100%;
-            top: 0;
-            background: coral;
+            left: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
             width: 100%;
             height: 100%;
-            -webkit-transition: all 400ms;
-            transition: all 400ms;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+            border: 1px solid #d6d6d6;
+            border-radius: 4px;
         }
-        button{
-            margin-top: 20%;
-            height: 50px;
-            width: 120px;
+        #GroupWrite-choice i {
+            line-height: 3.5rem;
+            font-size: 3rem;
+            margin: 0 .5rem;
         }
+        #GroupWrite-choice i:first-of-type {
+            color: #d6d6d6;
+            position: relative;
+        }
+        #GroupWrite-choice i:last-of-type {
+            color: #3d95d5;
+            font-size: 2rem;
+            float: right;
+        }
+        #GroupWrite-content {
+            width: 100%;
+            text-align: center;
+            padding-top: 1rem;
+        }
+        #GroupWrite-content textarea {
+            width: 88%;
+            min-height: 10rem;
+            max-height: 15rem;
+            border: 1px solid #d6d6d6;
+            border-radius: 4px;
+            resize: none;
+            padding: 1.1rem 1rem;
+            line-height: 1.5;
+            outline: none;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        #GroupWrite-set {
+            width: 88%;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            background: #469bff;
+            color: white;
+            border-radius: 4px;
+            padding: 1rem 0;
+            position: fixed;
+            left: 50%;
+            bottom: 2rem;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
     </style>
 </head>
 <body>
-    <div class="a">
-        <button id="one">
-            到第二页
-        </button>
-    </div>
-    <div class="b">
-        <button id="two">
-            到第一页
-        </button>
-    </div>
-<script type="text/javascript">
-    (function(){
-        var GO=function(){
-            this.a=document.querySelector(".a");
-            this.b=document.querySelector(".b");
+<div id="GroupWrite-choice">
+    <!--<img src="webapp/images/wapapp/frame/public/doctor.usr.png">-->
+    <!--<img src="webapp/images/wapapp/frame/public/doctor.circle.plus.blue.png">-->
+    <i class="iconfont">&#xe61b;</i>
+    选择患者
+    <i class="iconfont">&#xe606;</i>
+</div>
 
-            this.one=document.querySelector("#one");
-            this.two=document.querySelector("#two");
-            this.touch={};
-
-            this.bind();
-        };
-        GO.prototype={
-            bind:function(){
-                var self=this;
-                this.one.addEventListener('touchstart',function(){
-                    self.b.style.webkitTransform='translate3d(-100%,0,0)';
-                    self.b.style.transform='translate3d(-100%,0,0)';
-                    console.log(1)
-                },false);
-                this.two.addEventListener('touchstart',function(){
-                    self.b.style.webkitTransform='translate3d(0,0,0)'
-                },false);
-            }
-        };
-        new GO()
-    })()
-</script>
+<div id="GroupWrite-content">
+    <label>
+        <textarea placeholder="请输入相应的文字..."></textarea>
+    </label>
+</div>
+<a href="javascript:;" id="GroupWrite-set">点击发送</a>
 </body>
 </html>
