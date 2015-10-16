@@ -1,39 +1,455 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width , initial-scale=1.0 , maximum-scale=1.0 , user-scalable=0" name="viewport" />
-    <title></title>
-    <style type="text/css">
-        *{
-            padding: 0;
-            margin: 0;
+    <meta  name="viewport" content="width=device-width , initial-scale=1.0 , maximum-scale=1.0 , user-scalable=0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>分组管理</title>
+    <!--<link type="text/css" rel="stylesheet" href="../../../../styles/wapapp/groupConsult/reset.css">-->
+    <!--<link type="text/css" rel="stylesheet" href="../../../../styles/wapapp/customizeGroup/customizeGroup.css">-->
+    <style>
+        /*
+html5doctor.com Reset Stylesheet
+v1.4.1
+2010-03-01
+Author: Richard Clark - http://richclarkdesign.com
+*/
+
+        html, body, div, span, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        abbr, address, cite, code,
+        del, dfn, em, img, ins, kbd, q, samp,
+        small, strong, sub, sup, var,
+        b, i,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section, summary,
+        time, mark, audio, video {
+            margin:0;
+            padding:0;
+            border:0;
+            outline:0;
+            font-size:100%;
+            vertical-align:baseline;
+            background:transparent;
         }
-        html{
+
+        body {
+            line-height:1;
+        }
+
+        :focus {
+            outline: 1;
+        }
+
+        article,aside,canvas,details,figcaption,figure,
+        footer,header,hgroup,menu,nav,section,summary {
+            display:block;
+        }
+
+        nav ul {
+            list-style:none;
+        }
+
+        blockquote, q {
+            quotes:none;
+        }
+
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content:'';
+            content:none;
+        }
+
+        a {
+            margin:0;
+            padding:0;
+            border:0;
+            font-size:100%;
+            vertical-align:baseline;
+            background:transparent;
+        }
+
+        ins {
+            background-color:#ff9;
+            color:#000;
+            text-decoration:none;
+        }
+
+        mark {
+            background-color:#ff9;
+            color:#000;
+            font-style:italic;
+            font-weight:bold;
+        }
+
+        del {
+            text-decoration: line-through;
+        }
+
+        abbr[title], dfn[title] {
+            border-bottom:1px dotted #000;
+            cursor:help;
+        }
+
+        table {
+            border-collapse:collapse;
+            border-spacing:0;
+        }
+
+        hr {
+            display:block;
+            height:1px;
+            border:0;
+            border-top:1px solid #cccccc;
+            margin:1em 0;
+            padding:0;
+        }
+
+        input, select {
+            vertical-align:middle;
+        }
+        a{
+            text-decoration: none;
+        }
+        html {
+            font-size: 62.5% !important;
+            height: 100%;
             width: 100%;
         }
-        body{
+        html,
+        body {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        ul,
+        li {
+            list-style: none;
+        }
+        div {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+            font-size: 12px !important;
+            font-size: 1.2rem !important;
             width: 100%;
-            height: 999px;
+            height: 100%;
+            position: relative;
+            background: #EFEFF4;
+        }
+        a,
+        img {
+            -webkit-touch-callout: none;
+        }
+        i {
+            font-style: normal;
+        }
+        #GroupManagement-SelectGroup {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #EFEFF4;
+            -webkit-transform-style: preserve-3d;
+            /*锟斤拷锟斤拷锟斤拷嵌锟斤拷元锟斤拷锟斤拷 3D 锟秸硷拷锟斤拷锟轿筹拷锟街ｏ拷锟斤拷锟斤拷 3D*/
+            -webkit-backface-visibility: hidden;
+            /*锟斤拷锟斤拷锟矫斤拷锟斤拷转锟斤拷锟斤拷元锟截的憋拷锟斤拷锟斤拷锟斤拷锟斤拷锟矫伙拷时锟角凤拷锟缴硷拷锟斤拷锟斤拷锟截ｏ拷*/
+            -webkit-transition: -webkit-transform 300ms;
+            transition: transform 300ms;
+            z-index: 1;
+        }
+        #GroupManagement-SelectGroup .Group-changeID {
+            background: #61CAD0 !important;
+            color: white !important;
+        }
+        #GroupManagement-SelectGroup ul,
+        #GroupManagement-SelectGroup li {
+            width: 100%;
+            overflow: hidden;
+        }
+        #GroupManagement-SelectGroup li {
+            padding: 2rem 1rem;
+            background: white;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            position: relative;
+        }
+        #GroupManagement-SelectGroup li i {
+            color: #666666;
+            font-style: normal;
+        }
+        #GroupManagement-SelectGroup li:after {
+            content: '';
             position: absolute;
-            background: coral;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-        #a{
-            width: 100%;
-            height: 100px;
-            background: rgba(0,0,0,.3);
-            position: fixed;
             left: 0;
             bottom: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 1px;
+            background: #D9D9D9;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
         }
+        #GroupManagement-addGroup {
+            margin-top: 2.5rem;
+            width: 100%;
+            height: 5.5rem;
+            background: white;
+            display: block;
+            text-align: center;
+            line-height: 5.5rem;
+            text-decoration: none;
+            color: #3E87D2;
+        }
+        #GroupManagement-addGroup b {
+            background-image: url("../../../webapp/images/wapapp/frame/public/doctor.circle.plus.blue.png");
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: contain;
+            padding-left: 2.2rem;
+        }
+        #GroupManagement-change {
+            width: 100%;
+            height: 5rem;
+            background: white;
+            display: -webkit-box;
+            text-align: center;
+        }
+        #GroupManagement-change div {
+            -webkit-box-flex: 1;
+            height: 100%;
+            line-height: 5rem;
+            color: #3E88D2;
+            font-size: 1.5rem;
+        }
+        #GroupManagement-change-see b {
+            background-image: url("../../../webapp/images/wapapp/frame/public/GroupManagement.see.png");
+            background-size: contain;
+            background-position: left center;
+            background-repeat: no-repeat;
+            padding-left: 2.2rem;
+        }
+        #GroupManagement-change-rename b {
+            background-image: url("../../../webapp/images/wapapp/frame/public/GroupManagement.rename.png");
+            background-size: contain;
+            background-position: left center;
+            background-repeat: no-repeat;
+            padding-left: 2.2rem;
+        }
+        #GroupManagement-change-del b {
+            background-image: url("../../../webapp/images/wapapp/frame/public/GroupManagement.del.png");
+            background-size: contain;
+            background-position: left center;
+            background-repeat: no-repeat;
+            padding-left: 2.2rem;
+        }
+        #GroupManagement-renameBox {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+        }
+        .GroupManagement-alertBox {
+            width: 80%;
+            background: white;
+        }
+        .GroupManagement-alertContent {
+            width: 85%;
+            margin: 0 auto;
+            padding: 1rem 0;
+            font-size: 0;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-orient: vertical;
+        }
+        .GroupManagement-alertContent p {
+            text-align: left;
+            padding-bottom: 1.3rem;
+            color: #333333;
+            font-size: 1.2rem;
+        }
+        .GroupManagement-alertContent label {
+            display: block;
+            width: 100%;
+        }
+        #GroupManagement-renameText {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: inherit;
+            outline: none;
+            border: 1px solid #D9D9D9;
+            border-radius: 3px;
+            padding: .5rem .5rem;
+            font-size: 1rem;
+        }
+        .GroupManagement-btn {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: white;
+            width: 8.5rem;
+            height: 3rem;
+            text-align: center;
+            line-height: 3rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+        }
+        .GroupManagement-sure {
+            margin-right: .5rem;
+            background: #3D95D5;
+        }
+        .GroupManagement-cancel {
+            margin-left: .5rem;
+            background: #A4A4A4;
+        }
+
     </style>
 </head>
 <body>
-<div id="a"></div>
-<script>
+<div id="GroupManagement-SelectGroup">
+    <ul>
+        <li id="Group-allGrouped">
+            全部
+            <i>(30)</i>
+        </li>
+        <li id="Group-oneHPT">
+            一级高血压
+            <i>(25)</i>
+        </li>
+        <li id="Group-twoHPT">
+            二级高血压
+            <i>(35)</i>
+        </li>
+        <li id="Group-threeHPT">
+            三级高血压
+            <i>(15)</i>
+        </li>
+        <li id="Group-noGrouped">
+            未分组
+            <i>(40)</i>
+        </li>
+    </ul>
+    <div id="GroupManagement-change">
+        <div id="GroupManagement-change-see">
+            <b>
+                查看
+            </b>
 
+        </div>
+        <div id="GroupManagement-change-rename">
+            <b>
+                重命名
+            </b>
+
+        </div>
+        <div id="GroupManagement-change-del">
+            <b>
+                删除
+            </b>
+
+        </div>
+    </div>
+    <a href="javascript:;" id="GroupManagement-addGroup">
+        <b>
+            添加分组
+        </b>
+    </a>
+
+    <div id="GroupManagement-renameBox">
+        <div class="GroupManagement-alertBox">
+            <div class="GroupManagement-alertContent">
+                <div style="width: 100%">
+                    <p>修改分组</p>
+                </div>
+
+                <label for="GroupManagement-renameText">
+                    <input type="text" id="GroupManagement-renameText">
+                </label>
+                <a href="javascript:;" class="GroupManagement-btn GroupManagement-sure">
+                    确定
+                </a>
+                <a href="javascript:;" class="GroupManagement-btn GroupManagement-cancel">
+                    取消
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../../../scripts/zepto/zepto.min.js"></script>
+<script>
+    (function(){
+        var GroupManagement=function(){
+            this.GroupManagement_SelectGroup=document.querySelector("#GroupManagement-SelectGroup");
+            this.GroupManagement_SelectGroupList=document.querySelectorAll("#GroupManagement-SelectGroup li");
+            this.GroupManagement_SelectGroupListLen=this.GroupManagement_SelectGroupList.length;
+            this.Group_changeID='Group-changeID';
+
+            this.GroupManagement_change_see=document.querySelector("#GroupManagement-change-see");
+            this.GroupManagement_change_rename=document.querySelector("#GroupManagement-change-rename");
+
+            this.init();
+        };
+        GroupManagement.prototype={
+            init:function(){
+                this.set();
+                this.bind();
+            },
+            set:function(){
+                //为所有的数组添加一个方法
+                //根据参数删除数组内指定的值
+                Array.prototype.removeByVal=function(val){
+                    for(var i=0;i<this.length;i++){
+                        if(this[i] == val){
+                            this.splice(i,1);
+                            break
+                        }
+                    }
+                };
+            },
+            bind:function(){
+                var self=this;
+//                点击分组时添加样式
+                for(var i=0;i<this.GroupManagement_SelectGroupListLen;i++){
+                    self.GroupManagement_SelectGroupList[i].index=i;
+                    self.GroupManagement_SelectGroupList[i].addEventListener('tap',function(){
+
+                        for(var i= 0,l=self.GroupManagement_SelectGroupListLen;i<l;i++){
+                            self.GroupManagement_SelectGroupList[i].className=self.GroupManagement_SelectGroupList[i].className.replace(self.Group_changeID,'')
+                        }
+                        self.GroupManagement_SelectGroupList[this.index].className +=self.Group_changeID;
+                    },false)
+                }
+                //查看
+                this.GroupManagement_change_see.addEventListener('tap',function(e){
+
+                },false);
+                this.GroupManagement_change_rename.addEventListener('tap',function(e){
+                    var arr=[];
+                    for(var i= 0,l=self.GroupManagement_SelectGroupListLen;i<l;i++){
+                        if(self.GroupManagement_SelectGroupList[i].className === self.Group_changeID){
+//                                    arr.push(self.GroupManagement_SelectGroupList[i])
+
+                        }
+                    }
+                    console.log(arr)
+                },false)
+            }
+        };
+        new GroupManagement();
+    })()
 </script>
 </body>
 </html>
